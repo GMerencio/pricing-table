@@ -1,0 +1,253 @@
+/**
+ * CONTENTS
+ *
+ * GLOBAL
+ * Config...............Configuration variables.
+ * Mixins...............Useful mixins.
+ * Colors...............Color variables.
+ * Typography...........Typography-related variables.
+ * Breakpoints..........Breakpoint values.
+ *
+ * GENERIC
+ * Box-sizing...........Adjust default box-sizing.
+ *
+ * BASE
+ * Document.............Base HTML style.
+ * Body.................Base body style.
+ * Headings.............H1-H6 base styles.
+ *
+ * COMPONENTS
+ * Buttons..............Button elements.
+ * Box-group............Container holding several boxes.
+ * Box..................Generic container.
+ * Price-box............Container holding the price.
+ * Icons................Icons used throughout the page.
+ * Features-table.......Table used to display the features.
+ */
+ 
+ 
+ 
+/*------------------------------------*\
+  #Config
+\*------------------------------------*/
+ 
+$browser-context: 16;
+
+
+
+/*------------------------------------*\
+  #Mixins
+\*------------------------------------*/
+
+@function rem($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+}
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+
+
+/*------------------------------------*\
+  #Colors
+\*------------------------------------*/
+
+$concrete: #F2F2F2;
+$white: #FFF;
+$boulder: #767676;
+$boulder-2: #757575;
+$silver-chalice: #A3A3A3;
+
+
+
+/*------------------------------------*\
+  #Typography
+\*------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+$main-font: 'Open Sans', sans-serif;
+
+
+
+/*------------------------------------*\
+  #Breakpoints
+\*------------------------------------*/
+
+$bp-medium: em(900);
+$bp-large: em(1400);
+
+$large-screen-and-below: "(max-width: #{$bp-large})";
+$medium-screen-and-below: "(max-width: #{$bp-medium})";
+
+/*------------------------------------*\
+  #Box-sizing
+\*------------------------------------*/
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+
+
+/*------------------------------------*\
+  #Document
+\*------------------------------------*/
+
+html {
+  font-size: (100vw/1749) * $browser-context;
+  
+  @media #{$large-screen-and-below} {
+    font-size: 13px;
+  }
+}
+
+
+
+/*------------------------------------*\
+  #Body
+\*------------------------------------*/
+
+body {
+  font-family: $main-font;
+  background-color: $concrete;
+}
+
+
+
+/*------------------------------------*\
+  #Headings
+\*------------------------------------*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+
+
+/*------------------------------------*\
+  #Buttons
+\*------------------------------------*/
+
+.btn {
+  width: rem(289);
+  height: rem(49);
+  font-size:    rem(14);
+  font-weight:  bold;
+  background-image: linear-gradient(90deg, #946DFF, #2AACEE);
+  color: $white;
+  cursor: pointer;
+  border: none;
+  border-radius: rem(5);
+}
+
+.btn--special {
+  background-image: none;
+  background-color: $white;
+  color: $boulder-2;
+}
+
+
+
+/*------------------------------------*\
+  #Box-group
+\*------------------------------------*/
+
+.box-group {
+  display: flex;
+  justify-content: center;
+  margin-top: rem(92);
+  
+  @media #{$medium-screen-and-below} {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+}
+
+
+
+/*------------------------------------*\
+  #Box
+\*------------------------------------*/
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: rem(345);
+  background-color: $white;
+  padding-top:    rem(27);
+  padding-bottom: rem(49);
+  color: $boulder;
+  font-size: rem(13);
+}
+
+  .box__header {
+    font-size: rem(24);
+    font-weight: bold;
+    margin-bottom: rem(15);
+  }
+
+.box--special {
+  margin-top:     -#{rem(29)};
+  margin-bottom:  -#{rem(29)};
+  padding-top: rem(29+27);
+  background-image: linear-gradient(180deg, #946DFF, #2AACEE);
+  color: $white;
+}
+
+
+
+/*------------------------------------*\
+  #Price-box
+\*------------------------------------*/
+
+.price-box {
+  width: rem(143);
+  height: rem(143);
+  border-radius: 50%;
+  background-image: linear-gradient(180deg, #946DFF, #2AACEE);
+  font-size: rem(18);
+  margin-bottom: rem(25);
+  color: $white;
+  text-align: center;
+}
+
+  .price-box__price {
+    font-size: rem(20);
+  }
+  
+  .price-box__larger {
+    font-size: rem(45);
+  }
+
+.price-box--special {
+  background-image: none;
+  background-color: $white;
+  color: $boulder-2;
+}
+
+
+
+/*------------------------------------*\
+  #Icons
+\*------------------------------------*/
+
+@import 'fontello';
+
+
+
+/*------------------------------------*\
+  #Features-table
+\*------------------------------------*/
+
+.features-table {
+  width: rem(218);
+  margin-bottom: rem(45);
+}
